@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>カテゴリー一覧</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>競技の写真</h1>
+    <ul>
+        {% for category in categories %}
+            <li>{{ category }}</li>
+        {% endfor %}
+    </ul>
+    <form method="post" action="{{ url_for('cart') }}">
+        <h2>写真を選択</h2>
+        {% for photo in photos %}
+            <div>
+                <input type="checkbox" name="selected_photos" value="{{ photo['filename'] }}">
+                <img src="{{ url_for('static', filename='images/' + photo['filename']) }}" alt="{{ photo['title'] }}">
+            </div>
+        {% endfor %}
+        <input type="submit" value="カートに入れる">
+    </form>
+</body>
+</html>

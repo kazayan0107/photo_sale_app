@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;  /* 最大幅を設定 */
+    margin: 50px auto; /* 中央に配置 */
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center; /* タイトルを中央揃え */
+}
+
+.form-group {
+    margin-bottom: 15px; /* フォーム要素の間隔 */
+}
+
+label {
+    display: block; /* ラベルをブロック要素に */
+    margin-bottom: 5px; /* ラベルと入力欄の間隔 */
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%; /* 幅を100%に */
+    padding: 8px; /* パディングを追加 */
+    border: 1px solid #ccc; /* 枠線 */
+    border-radius: 4px; /* 角を丸く */
+}
+
+input[type="submit"] {
+    background-color: #4CAF50; /* ボタンの背景色 */
+    color: white; /* ボタンの文字色 */
+    padding: 10px; /* ボタンのパディング */
+    border: none; /* 枠線を削除 */
+    border-radius: 4px; /* 角を丸く */
+    cursor: pointer; /* カーソルをポインタに */
+    width: 100%; /* ボタンの幅を100%に */
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049; /* ホバー時の背景色 */
+}
