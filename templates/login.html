@@ -2,39 +2,97 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>ログイン</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>PTA 写真販売 アプリ - ログイン</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>ログイン</h1>
-        <form method="post">
-            <div class="form-group">
-                <label for="grade">学年:</label>
-                <input type="text" name="grade" id="grade" required>
-            </div>
-            <div class="form-group">
-                <label for="class_number">クラス:</label>
-                <input type="text" name="class_number" id="class_number" required>
-            </div>
-            <div class="form-group">
-                <label for="student_id">出席番号:</label>
-                <input type="text" name="student_id" id="student_id" required>
-            </div>
-            <div class="form-group">
-                <label for="email">メールアドレス:</label>
-                <input type="email" name="email" id="email" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">電話番号:</label>
-                <input type="text" name="phone" id="phone" required>
-            </div>
-            <div class="form-group">
-                <label for="login_code">ログインコード:</label>
-                <input type="text" name="login_code" id="login_code" required>
-            </div>
-            <input type="submit" value="ログイン">
-        </form>
-    </div>
+    <h1>PTA 写真販売 アプリ - ログイン</h1>
+    <form method="POST" action="{{ url_for('login') }}">
+        <label for="grade">学年:</label>
+        <input type="text" id="grade" name="grade" required>
+        
+        <label for="class_number">クラス:</label>
+        <input type="text" id="class_number" name="class_number" required>
+        
+        <label for="student_id">出席番号:</label>
+        <input type="text" id="student_id" name="student_id" required>
+        
+        <label for="name">名前:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">メールアドレス:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="phone">連絡先番号:</label>
+        <input type="tel" id="phone" name="phone" required>
+        
+        <label for="login_code">ログインコード:</label>
+        <input type="password" id="login_code" name="login_code" required>
+        
+        <button type="submit">ログイン</button>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="error-message">
+                    <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+    </form>
 </body>
 </html>

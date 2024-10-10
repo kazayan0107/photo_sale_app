@@ -2,17 +2,18 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>確認ページ</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>写真のカテゴリー</title>
 </head>
 <body>
-    <h1>確認ページ</h1>
+    <h1>写真のカテゴリー</h1>
+    <p>ここに写真のカテゴリー別の情報が表示されます。</p>
+    
     <ul>
-        {% for item in cart_items %}
-            <li>{{ item }}</li>
+        {% for category in categories %}
+            <li>{{ category.name }}</li>  <!-- カテゴリー名を表示 -->
         {% endfor %}
     </ul>
-    <button onclick="location.href='{{ url_for('payment') }}'">最終決定</button>
-
+    
+    <a href="{{ url_for('login') }}">ログアウト</a>
 </body>
 </html>

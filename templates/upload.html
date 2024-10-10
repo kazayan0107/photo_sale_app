@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>画像アップロード</title>
+</head>
+<body>
+    <h1>画像をアップロードする</h1>
+    <form action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data">
+        <label for="file">画像ファイル:</label>
+        <input type="file" name="file" accept="image/*" required><br>
+        
+        <label for="title">タイトル:</label>
+        <input type="text" name="title" placeholder="タイトル" required><br>
+        
+        <label for="category">カテゴリー:</label>
+        <input type="text" name="category" placeholder="カテゴリー" required><br>
+        
+        <label for="url">画像のURL:</label>
+        <input type="url" name="url" placeholder="画像のURL" required><br>
+        
+        <label for="price">価格:</label>
+        <input type="number" name="price" placeholder="価格" required><br>
+        
+        <input type="submit" value="アップロード">
+    </form>
+    
+    <a href="{{ url_for('categories') }}">戻る</a>
+</body>
+</html>

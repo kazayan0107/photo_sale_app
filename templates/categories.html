@@ -7,19 +7,30 @@
 </head>
 <body>
     <h1>競技の写真</h1>
+    
+    <!-- 各カテゴリーを表示 -->
     <ul>
-        {% for category in categories %}
-            <li>{{ category }}</li>
+        {% for category, photos in categorized_photos.items() %}
+            <li>
+                <h2>{{ category }}</h2>
+                <ul>
+                    <!-- 各カテゴリー内の写真を表示 -->
+                    {% for photo in photos %}
+                        <li>
+                            <div>
+                                <!-- Google Drive のURLを使って画像を表示 -->
+                                <input type="checkbox" name="selected_photos" value="{{ photo['filename'] }}">
+                                <img src="{{ photo['url'] }}" alt="{{ photo['title'] }}" style="width: 200px; height: auto;"> <!-- 画像サイズを指定 -->
+                                <p>{{ photo['title'] }}</p>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
         {% endfor %}
     </ul>
+    
     <form method="post" action="{{ url_for('cart') }}">
-        <h2>写真を選択</h2>
-        {% for photo in photos %}
-            <div>
-                <input type="checkbox" name="selected_photos" value="{{ photo['filename'] }}">
-                <img src="{{ url_for('static', filename='images/' + photo['filename']) }}" alt="{{ photo['title'] }}">
-            </div>
-        {% endfor %}
         <input type="submit" value="カートに入れる">
     </form>
 </body>
